@@ -1,0 +1,53 @@
+﻿@model HW7.Models.User
+
+
+<div class="container-fluid" style="border:solid #5792ff 5px; padding:7px; border-radius: 7px; background-color:#b5cfff">
+    <div class="row">
+        <div class="col-md-3">
+            <row>
+                <div class="container-fluid">
+                    <img src="@Html.DisplayFor(model => model.profilePic)" style="height:150px; width:150px" />
+                </div>
+            </row>
+        </div>
+        <div class="col-md-3">
+            <text style="font-size: 30px; font-family: 'OCR A'; color: #1d009c">
+                @Html.DisplayFor(model => model.name)
+            </text>
+            <ul style="list-style-type: circle;">
+                <li style="font-size: 20px; font-family: 'OCR A'; color: #1d009c">@Html.DisplayFor(model => model.userName)</li>
+                <li style="font-size: 20px; font-family: 'OCR A'; color: #1d009c">@Html.DisplayFor(model => model.location)</li>
+                <li style="font-size: 20px; font-family: 'OCR A'; color: #1d009c">@Html.DisplayFor(model => model.bio)</li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+<br />
+
+<h1 style="font-size:30px; color: Black; font-family: 'OCR A'; color: #1d009c">Repositories</h1>
+
+<div class="grid-container" style="display:grid; grid-column-gap: 10px; grid-row-gap: 10px; grid-template-columns: auto auto auto; padding: 5px;">
+    @foreach (var item in Model.repoList)
+    {
+        <div class="grid-item" style="border: outset #ffc561 5px; border-radius: 7px;  background-color:#ffdea6; padding: 15px; font-size:16px; text-align: center;">
+            <div class="row">
+                <div class="col-md-3">
+                    
+                    <text style="font-size: 20px; font-family: 'OCR A'; color: #1d009c">@item.name</text><br />
+                    <text style="font-size: 20px; font-family: 'OCR A'; color: #1d009c">@item.edited</text><br />
+                </div>
+            </div>
+            <div class="col-md-3 align-items-baseline">
+                <button type=button onclick="commitFunction()" class="btn btn-primary btn-sm" id="btn">Commits</button>
+            </div>
+        </div>
+    }
+
+
+</div>
+
+@section scripts
+{
+    <script type="text/javascript" src="~/Scripts/Commits.js"></script>
+}
